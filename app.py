@@ -109,7 +109,7 @@ def procesar_pdf(archivo_pdf, nombre_pdf):
     collection.insert_many(documentos)
 
     # Guardar PDF en GridFS (reemplaza a Backblaze)
-    st.info("📤 Guardando PDF en MongoDB...")
+    st.info("📤 Guardando PDF en MongoDB")
     if fs.exists({"filename": nombre_pdf}):
         for f in fs.find({"filename": nombre_pdf}):
             fs.delete(f._id)
@@ -180,7 +180,7 @@ Responde en español, de forma clara.
 # =======================
 
 st.set_page_config(page_title="ChatBot", page_icon="📚")
-st.title("📚 Chat con PDFs en MongoDB + Gemini + Cohere: " + USER)
+st.title("📚 Chat con PDFs en MongoDB + Gemini + Cohere: EXAMEN FINAL " + USER)
 
 archivo_pdf = st.file_uploader("📤 Sube un PDF", type=["pdf"])
 
@@ -188,7 +188,7 @@ if archivo_pdf:
     if st.button("Procesar y guardar PDF"):
         with st.spinner("Procesando PDF..."):
             cantidad = procesar_pdf(archivo_pdf, archivo_pdf.name)
-            st.success(f"Procesado: {cantidad} fragmentos generados y PDF guardado.")
+            st.success(f"Procesado: {cantidad} fragmentos generados y PDF guardado examen.")
 
         st.info("📖 Vista previa del PDF desde MongoDB:")
         pdf_bytes = obtener_pdf(archivo_pdf.name)
